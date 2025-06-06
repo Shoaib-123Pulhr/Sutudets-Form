@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <!-- This is a student profile form for UET Lahore -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>UET Lahore - Student Application Form</title>
+    
+    <!-- I'm loading Font Awesome from CDN but locally would be better -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    
+    <style>
+    /* Reset some default styles */
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+    
+    /* Main container */
+    .form-container {
+        width: 95%;
+        max-width: 1000px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    /* Header styles */
+    .form-header {
+        background: #8b0000;
+        background: -webkit-linear-gradient(left, #7a0000, #9e2323);
+        background: linear-gradient(to right, #7a0000, #9e2323);
+        padding: 25px;
+        color: white;
+        text-align: center;
+        position: relative;
+    }
+    
+    .university-logo {
+        width: 70px;
+        height: 70px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 25px;
+        top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #d4af37;
+    }
+    
+    .university-logo span {
+        color: #8b0000;
+        font-weight: bold;
+        font-size: 22px;
+    }
+    
+    .form-title {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+    
+    .form-subtitle {
+        font-size: 16px;
+        color: #ffd700;
+    }
+    
+    /* Form sections */
+    .section {
+        padding: 20px 30px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .section-title {
+        color: #8b0000;
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #d4af37;
+        display: flex;
+        align-items: center;
+    }
+    
+    .section-title i {
+        background: #8b0000;
+        color: #ffd700;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    
+    /* Photo upload area */
+    .photo-area {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    
+    .photo-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #f5f5f5;
+        border: 3px solid #d4af37;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+    
+    .photo-preview i {
+        color: #8b0000;
+        font-size: 35px;
+    }
+    
+    .upload-btn {
+        background: #8b0000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    /* Form tables */
+    .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+    
+    .form-table th {
+        background: #f8f8f8;
+        padding: 12px;
+        text-align: left;
+        font-weight: 600;
+    }
+    
+    .form-table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    /* Input fields */
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 15px;
+    }
+    
+    .input-field:focus {
+        outline: none;
+        border-color: #8b0000;
+    }
+    
+    textarea.input-field {
+        min-height: 100px;
+    }
+    
+    /* Submit button */
+    .submit-section {
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .submit-btn {
+        background: #8b0000;
+        color: white;
+        border: none;
+        padding: 12px 35px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    /* Responsive stuff */
+    @media (max-width: 768px) {
+        .form-container {
+            width: 100%;
+            margin: 0;
+            border-radius: 0;
+        }
+        
+        .form-header {
+            padding: 25px 15px 25px 80px;
+        }
+        
+        .photo-area {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .photo-preview {
+            margin-bottom: 15px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <header class="form-header">
+    <div class="university-logo">
+    <img src="uet image.png" alt="UET Logo" style="width: 100%; height: 100%; border-radius: 50%;">
+       </div>
+  
+            <h1 class="form-title">University of Engineering & Technology</h1>
+            <p class="form-subtitle">Lahore - Student Application Form</p>
+        </header>
+        
+        <form id="appForm" method="post" action="#">
+            <!-- Personal Info -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-user"></i> Personal Information
+                </h2>
+                
+                <div class="photo-preview" id="photoPreview">
+                <span><i class="fas fa-user"></i></span>
+                </div>
+                <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                <button type="button" class="upload-btn" id="uploadBtn">
+                <i class="fas fa-upload"></i> Upload Photo
+                </button>
+                <table class="form-table">
+                    <tr>
+                        <td><label>Full Name</label></td>
+                        <td><input type="text" class="input-field" name="full_name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Date of Birth</label></td>
+                        <td><input type="date" class="input-field" name="dob" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Contact Number</label></td>
+                        <td><input type="tel" class="input-field" name="phone" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email Address</label></td>
+                        <td><input type="email" class="input-field" name="email" required></td>
+                    </tr>
+                </table>
+            </section>
+            
+            <!-- Family Info -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-home"></i> Family Information
+                </h2>
+                
+                <table class="form-table">
+                    <tr>
+                        <td><label>Father's Name</label></td>
+                        <td><input type="text" class="input-field" name="father_name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Father's Occupation</label></td>
+                        <td><input type="text" class="input-field" name="father_occupation" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Monthly Income (PKR)</label></td>
+                        <td><input type="number" class="input-field" name="income" min="0" required></td>
+                    </tr>
+                </table>
+            </section>
+            
+            <!-- Education -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i> Educational Background
+                </h2>
+                
+                <table class="form-table">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th>Institution</th>
+                            <th>Year</th>
+                            <th>Marks/GPA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Matriculation</td>
+                            <td><input type="text" class="input-field" name="matric_school" required></td>
+                            <td><input type="text" class="input-field" name="matric_year" required></td>
+                            <td><input type="text" class="input-field" name="matric_marks" required></td>
+                        </tr>
+                        <tr>
+                            <td>Intermediate</td>
+                            <td><input type="text" class="input-field" name="inter_college" required></td>
+                            <td><input type="text" class="input-field" name="inter_year" required></td>
+                            <td><input type="text" class="input-field" name="inter_marks" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Program Selection -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-book"></i> Program Selection
+                </h2>
+                
+                <table class="form-table">
+                    <thead>
+                        <tr>
+                            <th>Preference</th>
+                            <th>Program</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>First Choice</td>
+                            <td>
+                                <select class="input-field" name="first_program" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="bs">BS</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="input-field" name="first_dept" required>
+                                    <option value="">-- Select --</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="ee">Electrical Eng.</option>
+                                    <option value="me">Mechanical Eng.</option>
+                                    <option value="ai">Artificial Engineering</option>
+                                    <option value="CE">Civil Engineering</option>
+                                    <option value="ME">Mechatronics Engineering</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Second Choice</td>
+                            <td>
+                                <select class="input-field" name="second_program">
+                                    <option value="">-- Select --</option>
+                                    <option value="bs">BS</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="input-field" name="second_dept">
+                                    <option value="">-- Select --</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="ai">Artificial Engineering</option>
+                                    <option value="CE">Civil Engineering</option>
+                                    <option value="ME">Mechatronics Engineering</option>
+                                    <option value="ee">Electrical Eng.</option>
+                                    <option value="me">Mechanical Eng.</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Personal Statement -->
+            <section class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-edit"></i> Personal Statement
+                </h2>
+                
+                <div style="margin-top:15px;">
+                    <textarea class="input-field" name="statement" placeholder="Tell us about yourself and why you want to join UET..." required></textarea>
+                </div>
+            </section>
+            
+            <!-- Form Submission -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    const photoPreview = document.getElementById('photoPreview');
+    const photoInput = document.getElementById('photoInput');
+    const uploadBtn = document.getElementById('uploadBtn');
+
+    uploadBtn.addEventListener('click', () => photoInput.click());
+
+    photoInput.addEventListener('change', handleImage);
+
+    photoPreview.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        photoPreview.style.borderColor = '#8b0000';
+    });
+
+    photoPreview.addEventListener('dragleave', () => {
+        photoPreview.style.borderColor = '#d4af37';
+    });
+
+    photoPreview.addEventListener('drop', (e) => {
+        e.preventDefault();
+        photoPreview.style.borderColor = '#d4af37';
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+            previewImage(file);
+        }
+    });
+
+    function handleImage(e) {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            previewImage(file);
+        }
+    }
+
+    function previewImage(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            photoPreview.innerHTML = `<img src="${reader.result}" style="width:100%; height:100%; border-radius: 50%;">`;
+        };
+        reader.readAsDataURL(file);
+    }
+</script>
+
+</html>
